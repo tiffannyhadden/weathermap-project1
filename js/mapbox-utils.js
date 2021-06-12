@@ -1,7 +1,28 @@
-initMap();
+mapboxgl.accessToken = MAPBOX_TOKEN;
+let map = new mapboxgl.Map({
+    container: 'map', // container ID
+    style: 'mapbox://styles/mapbox/dark-v10',
+    center: [-98.49272, 29.42527],
+    zoom: 8.7
+});
 
-function initMap() { //map
-    //this is where i'm going to put map
-    //MAPBOX_TOKEN here is my map id token const
+map.addControl(new mapboxgl.NavigationControl());
 
-}
+
+var popup = new mapboxgl.Popup()
+    .setHTML("<h5>San Antonio, Texas, United States</h5>")
+    .setMaxWidth("200px");
+
+var marker = new mapboxgl.Marker({
+    color: '#1795d4'
+})
+    .setLngLat([-98.49272, 29.42527])
+    .setDraggable(true)
+    .setPopup(popup)
+    .addTo(map);
+
+marker.on('dragend', function (){
+    coords = marker.getLngLat().toArray().reverse();
+    fetchForecast(coords);
+});
+

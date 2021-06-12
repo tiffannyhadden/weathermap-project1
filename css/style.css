@@ -1,0 +1,18 @@
+body {
+    background-color: salmon;
+}
+
+h1 {
+    text-align: center;
+}
+
+.btnBox {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+
+.card {
+    margin: 4px;
+}

@@ -1,12 +1,33 @@
-initWeather();
 
-function initWeather() { // weather
+
+function fetchForecast(coordinates) {
     $.get("https://api.openweathermap.org/data/2.5/forecast", {
         APPID: OPEN_WEATHER_APPID,
-        lat:    29.423017,
-        lon:   -98.48527,
+        lat:    coordinates[0],
+        lon:   coordinates[1],
         units: "imperial"
     }).done(function (data) {
-        console.log(data)
+        applyDataToCards(data);
     })
+}
+
+function getWeatherIcon(index, data) {
+    let img = data.list[index].weather[0].icon;
+    return '<img alt="icon" src="https://openweathermap.org/img/w/'+ img +'.png">'
+}
+
+function getHumidity(index, data) {
+    return data.list[index].main.humidity;
+}
+
+function getMaxTemp(index, data) {
+    return Math.round(data.list[index].main.temp_max);
+}
+
+function getMinTemp(index, data) {
+    return Math.round(data.list[index].main.temp_min);
+}
+
+function getDate(index, data) {
+    return data.list[index].dt_txt;
 }
