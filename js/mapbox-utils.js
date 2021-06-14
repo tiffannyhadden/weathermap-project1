@@ -44,7 +44,7 @@ let results = document.getElementById('result');
 // Add geocoder result to container.
 geocoder.on('result', function (e) {
     results.innerText = e.result.place_name;
-    marker.setLngLat(e.result.geometry.coordinates)
+    marker.setLngLat(e.result.geometry.coordinates) // helped me get search bar working completely
 });
 
 

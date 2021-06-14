@@ -7,7 +7,6 @@ function startApp() {
     cardView();
 }
 
-
 function applyDataToCards(data, view) {
         $(".day1").html(buildList(data, 0))
         $(".day2").html(buildList(data, 8))

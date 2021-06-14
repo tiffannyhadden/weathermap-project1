@@ -17,6 +17,8 @@ function fetchForecast(coordinates) {
 
 }
 
+
+
 function getWeatherIcon(index, data) {
     let img = data.list[index].weather[0].icon;
     return '<img alt="icon" src="https://openweathermap.org/img/w/'+ img +'.png">'
@@ -39,7 +41,7 @@ function getDate(index, data) {
 }
 
 function getDayFormatted(index, data) {
-    return data.list[index].dt_txt.slice(5, 10);
+    return data.list[index].dt_txt.slice(5, 10); // slices it so you can get the specific date like 6/26 or 6/25
 }
 
 
