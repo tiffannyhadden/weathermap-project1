@@ -1,14 +1,20 @@
 
 
 function fetchForecast(coordinates) {
-    $.get("https://api.openweathermap.org/data/2.5/forecast", {
-        APPID: OPEN_WEATHER_APPID,
-        lat:    coordinates[0],
-        lon:   coordinates[1],
-        units: "imperial"
-    }).done(function (data) {
-        applyDataToCards(data);
+    $.ajax({
+        url: "https://api.openweathermap.org/data/2.5/forecast",
+        type: "GET",
+        data: {
+            APPID: OPEN_WEATHER_APPID,
+            lat: coordinates[0],
+            lon: coordinates[1],
+            units: "imperial"
+        },
+        success: function(data){
+            applyDataToCards(data)
+        }
     })
+
 }
 
 function getWeatherIcon(index, data) {
@@ -31,3 +37,9 @@ function getMinTemp(index, data) {
 function getDate(index, data) {
     return data.list[index].dt_txt;
 }
+
+function getDayFormatted(index, data) {
+    return data.list[index].dt_txt.slice(5, 10);
+}
+
+

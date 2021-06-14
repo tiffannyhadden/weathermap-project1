@@ -1,6 +1,6 @@
 mapboxgl.accessToken = MAPBOX_TOKEN;
 let map = new mapboxgl.Map({
-    container: 'map', // container ID
+    container: 'map',
     style: 'mapbox://styles/mapbox/dark-v10',
     center: [-98.49272, 29.42527],
     zoom: 8.7
@@ -22,7 +22,9 @@ var marker = new mapboxgl.Marker({
     .addTo(map);
 
 marker.on('dragend', function (){
-    coords = marker.getLngLat().toArray().reverse();
+    let coords = marker.getLngLat().toArray().reverse();
     fetchForecast(coords);
 });
+
+
 
